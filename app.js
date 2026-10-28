@@ -1,83 +1,63 @@
 /**
- * Main Application Logic for Aarav Malhotra weds Diya Sharma
+ * Main Application Logic for Dr. Arpan Someshwar Zure weds Prof. Kirti Namdeo Pagote
  * Exact clone functionality for ShaadiKaCard Frosty Blue template
  */
 
 // ============================================================================
 // 1. DATA DEFINITIONS
 // ============================================================================
-const weddingDateTarget = new Date('2027-02-13T19:30:00+05:30');
+const weddingDateTarget = new Date('2027-01-20T13:12:00+05:30');
 
 const eventsData = [
   {
-    name: "RING CEREMONY",
-    date: "10 FEB 2027",
-    time: "05:00 PM",
-    venueName: "THE LEELA PALACE",
-    venueAddress: "Chanakyapuri, New Delhi",
-    image: "./templates/frosty-blue/events/frosty_event_ring.webp",
-    desc: "Two hearts, one promise a beautiful beginning.",
-    mapUrl: "https://maps.google.com/?q=The+Leela+Palace+New+Delhi"
+    name: "MEHANDI CEREMONY",
+    date: "18 JAN 2027",
+    time: "Evening",
+    venueName: "GROOM'S HOUSE",
+    venueAddress: "Near Tahsil Office, Tukdoji Nagar No. 13, Gondpipari, Dist. Chandrapur (442702)",
+    image: "./templates/frosty-blue/events/groom-mehandi.png",
+    desc: "Hands full of henna, hearts full of warmth and celebrations.",
+    mapUrl: "https://maps.google.com/?q=Tukdoji+Nagar+Gondpipari+Chandrapur"
   },
   {
-    name: "HALDI",
-    date: "11 FEB 2027",
-    time: "10:00 AM",
-    venueName: "THE LEELA PALACE",
-    venueAddress: "Chanakyapuri, New Delhi",
+    name: "HALDI & SANGEET CEREMONY",
+    date: "19 JAN 2027",
+    time: "07:00 PM to 10:00 PM",
+    venueName: "GROOM'S HOUSE",
+    venueAddress: "Near Tahsil Office, Tukdoji Nagar No. 13, Gondpipari, Dist. Chandrapur (442702)",
     image: "./templates/frosty-blue/events/frosty_event_haldi_1788963863020.webp",
-    desc: "A splash of yellow, a whole lot of love.",
-    mapUrl: "https://maps.google.com/?q=The+Leela+Palace+New+Delhi"
+    desc: "An evening filled with vibrant haldi, rhythmic beats, dance, and joyous memories.",
+    mapUrl: "https://maps.google.com/?q=Tukdoji+Nagar+Gondpipari+Chandrapur"
   },
   {
-    name: "MEHENDI",
-    date: "12 FEB 2027",
-    time: "04:00 PM",
-    venueName: "THE LEELA PALACE",
-    venueAddress: "Chanakyapuri, New Delhi",
-    image: "./templates/frosty-blue/events/frosty_event_mehndi_1788963987519.webp",
-    desc: "Hands full of henna, hearts full of love.",
-    mapUrl: "https://maps.google.com/?q=The+Leela+Palace+New+Delhi"
-  },
-  {
-    name: "SANGEET",
-    date: "12 FEB 2027",
-    time: "07:00 PM",
-    venueName: "THE LEELA PALACE",
-    venueAddress: "Chanakyapuri, New Delhi",
-    image: "./templates/frosty-blue/events/frosty_event_sangeet_1788964110415.webp",
-    desc: "Music, dance and memories that last forever.",
-    mapUrl: "https://maps.google.com/?q=The+Leela+Palace+New+Delhi"
-  },
-  {
-    name: "WEDDING",
-    date: "13 FEB 2027",
-    time: "07:30 PM",
-    venueName: "THE LEELA PALACE",
-    venueAddress: "Chanakyapuri, New Delhi",
+    name: "MARRIAGE CEREMONY",
+    date: "20 JAN 2027",
+    time: "01:12 PM",
+    venueName: "LAXMI RAMAA SANSKRUTIK SABHAGRUHA",
+    venueAddress: "Bazar Chowk, Pauni, Dist. Bhandara, Maharashtra (441910)",
     image: "./templates/frosty-blue/events/frosty_event_wedding_1788964447182.webp",
-    desc: "The day we say forever and always.",
-    mapUrl: "https://maps.google.com/?q=The+Leela+Palace+New+Delhi"
+    desc: "The sacred and auspicious moment when two souls unite for a lifetime.",
+    mapUrl: "https://share.google/XVAMxHFMHgObLFjq"
   },
   {
-    name: "RECEPTION",
-    date: "14 FEB 2027",
-    time: "07:00 PM",
-    venueName: "THE LEELA PALACE",
-    venueAddress: "Chanakyapuri, New Delhi",
+    name: "RECEPTION CEREMONY",
+    date: "21 JAN 2027",
+    time: "07:00 PM to 11:00 PM",
+    venueName: "KANYAAKA MATA SABHAGRUHA",
+    venueAddress: "Near Nagar Panchayat, Gondpipari, Dist. Chandrapur (442702)",
     image: "./templates/frosty-blue/events/frosty_event_reception_1788964554860.webp",
-    desc: "Let's celebrate love, laughter and happily ever after.",
-    mapUrl: "https://maps.google.com/?q=The+Leela+Palace+New+Delhi"
+    desc: "Join us in celebrating love, togetherness, and hearty laughter with family & friends.",
+    mapUrl: "https://share.google/KTeNgJ1zMpzMD8uJR"
   }
 ];
 
 const galleryImages = [
-  "./assets/photos/photo_1.webp",
-  "./assets/photos/photo_2.webp",
-  "./assets/photos/photo_3.webp",
-  "./assets/photos/photo_4.webp",
-  "./assets/photos/photo_5.webp",
-  "./assets/photos/photo_6.webp"
+  "./assets/photos/couple1.png",
+  "./assets/photos/couple2.jpeg",
+  "./assets/photos/couple3.jpeg",
+  "./assets/photos/couple4.png",
+  "./assets/photos/couple5.jpeg",
+  "./assets/photos/couple6.jpeg"
 ];
 
 // ============================================================================
@@ -599,10 +579,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // 8. ADD TO CALENDAR HELPER
 // ============================================================================
 function addToCalendar() {
-  const title = encodeURIComponent("Aarav Malhotra & Diya Sharma Wedding");
-  const details = encodeURIComponent("Join us in celebrating the wedding of Aarav and Diya at The Leela Palace.");
-  const location = encodeURIComponent("The Leela Palace, Chanakyapuri, New Delhi, 110023");
-  const dates = "20270213T140000Z/20270213T190000Z"; // UTC time for 7:30 PM IST
+  const title = encodeURIComponent("Dr. Arpan Zure & Prof. Kirti Pagote Wedding");
+  const details = encodeURIComponent("Join us in celebrating the wedding ceremony of Dr. Arpan Someshwar Zure and Prof. Kirti Namdeo Pagote at Laxmi Ramaa Sanskrutik Sabhagruha, Pauni.");
+  const location = encodeURIComponent("Laxmi Ramaa Sanskrutik Sabhagruha, Bazar Chowk, Pauni, Bhandara, Maharashtra – 441910");
+  const dates = "20270120T074200Z/20270120T120000Z"; // 01:12 PM IST is 07:42 AM UTC
 
   const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
   window.open(googleUrl, '_blank');
