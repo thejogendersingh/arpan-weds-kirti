@@ -22,7 +22,7 @@ const eventsData = [
   {
     name: "HALDI & SANGEET CEREMONY",
     date: "19 JAN 2027",
-    time: "07:00 PM to 10:00 PM",
+    time: "Evening 07:30 PM to 10:00 PM",
     venueName: "GROOM'S HOUSE",
     venueAddress: "Near Tahsil Office, Tukdoji Nagar No. 13, Gondpipari, Dist. Chandrapur (442702)",
     image: "./templates/frosty-blue/events/frosty_event_haldi_1788963863020.webp",
@@ -49,15 +49,6 @@ const eventsData = [
     desc: "Join us in celebrating love, togetherness, and hearty laughter with family & friends.",
     mapUrl: "https://share.google/KTeNgJ1zMpzMD8uJR"
   }
-];
-
-const galleryImages = [
-  "./assets/photos/couple1.png",
-  "./assets/photos/couple2.jpeg",
-  "./assets/photos/couple3.jpeg",
-  "./assets/photos/couple4.png",
-  "./assets/photos/couple5.jpeg",
-  "./assets/photos/couple6.jpeg"
 ];
 
 // ============================================================================
@@ -416,119 +407,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ============================================================================
-// 6. PHOTO GALLERY SLIDER & LIGHTBOX
-// ============================================================================
-let currentGalleryIdx = 0;
-
-function renderGallery(idx) {
-  currentGalleryIdx = idx;
-  const mainImg = document.getElementById('galleryMainImg');
-  const counter = document.getElementById('galleryCurrentNum');
-
-  if (mainImg) mainImg.src = galleryImages[idx];
-  if (counter) counter.textContent = idx + 1;
-
-  // Update active thumbnail
-  const thumbs = document.querySelectorAll('.Template3-module__zDQZ6a__galleryThumbnailItem');
-  thumbs.forEach((th, i) => {
-    if (i === idx) {
-      th.classList.add('Template3-module__zDQZ6a__galleryThumbnailActive');
-    } else {
-      th.classList.remove('Template3-module__zDQZ6a__galleryThumbnailActive');
-    }
-  });
-}
-
-function openLightbox(idx) {
-  currentGalleryIdx = idx ?? currentGalleryIdx;
-  const lightbox = document.getElementById('galleryLightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  const lbCounter = document.getElementById('lightboxCounter');
-
-  if (lbImg) lbImg.src = galleryImages[currentGalleryIdx];
-  if (lbCounter) lbCounter.textContent = `${currentGalleryIdx + 1} / ${galleryImages.length}`;
-
-  if (lightbox) {
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeLightbox() {
-  const lightbox = document.getElementById('galleryLightbox');
-  if (lightbox) {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const prevBtn = document.getElementById('galleryPrevBtn');
-  const nextBtn = document.getElementById('galleryNextBtn');
-  const mainCard = document.getElementById('galleryMainCard');
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const prev = currentGalleryIdx === 0 ? galleryImages.length - 1 : currentGalleryIdx - 1;
-      renderGallery(prev);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const next = currentGalleryIdx === galleryImages.length - 1 ? 0 : currentGalleryIdx + 1;
-      renderGallery(next);
-    });
-  }
-
-  if (mainCard) {
-    mainCard.addEventListener('click', () => {
-      openLightbox(currentGalleryIdx);
-    });
-  }
-
-  const thumbButtons = document.querySelectorAll('.Template3-module__zDQZ6a__galleryThumbnailItem');
-  thumbButtons.forEach((th) => {
-    th.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const idx = parseInt(th.getAttribute('data-idx') || '0', 10);
-      renderGallery(idx);
-    });
-  });
-
-  // Lightbox nav buttons
-  const lbPrev = document.getElementById('lightboxPrevBtn');
-  const lbNext = document.getElementById('lightboxNextBtn');
-
-  if (lbPrev) {
-    lbPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const prev = currentGalleryIdx === 0 ? galleryImages.length - 1 : currentGalleryIdx - 1;
-      currentGalleryIdx = prev;
-      openLightbox(prev);
-      renderGallery(prev);
-    });
-  }
-
-  if (lbNext) {
-    lbNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const next = currentGalleryIdx === galleryImages.length - 1 ? 0 : currentGalleryIdx + 1;
-      currentGalleryIdx = next;
-      openLightbox(next);
-      renderGallery(next);
-    });
-  }
-});
-
 // ESC key closes modals
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeEventModal();
-    closeLightbox();
   }
 });
 
